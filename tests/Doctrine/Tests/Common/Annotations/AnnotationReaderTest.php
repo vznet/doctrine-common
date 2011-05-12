@@ -4,8 +4,6 @@ namespace Doctrine\Tests\Common\Annotations;
 
 use ReflectionClass, Doctrine\Common\Annotations\AnnotationReader;
 
-require_once __DIR__ . '/../../TestInit.php';
-
 class AnnotationReaderTest extends \Doctrine\Tests\DoctrineTestCase
 {
     public function testAnnotations()
@@ -145,7 +143,7 @@ class AnnotationReaderTest extends \Doctrine\Tests\DoctrineTestCase
         $class = new ReflectionClass('Doctrine\Tests\Common\Annotations\DummyClassNonAnnotationProblem');
         $annotations = $reader->getPropertyAnnotations($class->getProperty('foo'));
         $this->assertArrayHasKey('Doctrine\Tests\Common\Annotations\DummyAnnotation', $annotations);
-        $this->assertType('Doctrine\Tests\Common\Annotations\DummyAnnotation', $annotations['Doctrine\Tests\Common\Annotations\DummyAnnotation']);
+        $this->assertInstanceOf('Doctrine\Tests\Common\Annotations\DummyAnnotation', $annotations['Doctrine\Tests\Common\Annotations\DummyAnnotation']);
     }
 
     /**
